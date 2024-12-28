@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout/layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h2  th:text="${title}">Thông Tin Sinh Viên</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/search}">
+                    <input type="text" name="keyword" th:value="${keyword}" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="button" value="Clear" class="btn btn-secondary" onClick="clearSearch()">Clear</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Mã SV</th>
+            <th scope="col">Họ Tên</th>
+            <th scope="col">Tên Trường</th>
+            <th scope="col">Mã Đợt Cứu Trợ</th>
+            <th scope="col">Khẩu Hiệu</th>
+            <th scope="col">Ngày Cứu Trợ</th>
+            <th scope="col">Đề Xuất Cải Thiện</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <!-- Ensure this is inside your HTML template -->
+        <tbody class="tb-cuutro">
+        <tr th:fragment="cuutroRows" th:each="cuutro : ${listCuuTro}">
+            <td th:text="${cuutro.maSV}">1</td>
+            <td th:text="${cuutro.hoTen}">1</td>
+            <td th:text="${cuutro.tenTruong}">John Doe</td>
+            <td th:text="${cuutro.maDotCuuTro}">john.doe@example.com</td>
+            <td th:text="${cuutro.khauHieu}">john.doe@example.com</td>
+            <td th:text="${cuutro.ngayCuuTro}">john.doe@example.com</td>
+            <td th:text="${cuutro.deXuatCaiThien}">john.doe@example.com</td>
+            <td>
+                <a class="btn btn-danger btn-sm" th:href="@{/delete/{id}(id=${cuutro.maSV})}"
+                   onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/search}]]";
+        }
+    </script>
+</div>
+</body>
+</html>

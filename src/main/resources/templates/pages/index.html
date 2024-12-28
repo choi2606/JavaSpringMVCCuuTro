@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorate="~{layout/layout}">
+<body>
+<div layout:fragment="content">
+    <h1>Thông tin cứu trợ</h1>
+    <form th:action="@{/addInfoCuuTro}" th:object = "${cuuTroDto}" method="post">
+        <div class="form-group">
+            <div th:if="${errorMessage}" class="text-danger">
+                <p th:text="${errorMessage}"></p>
+            </div>
+            <label for="maSV">Mã Sinh Viên:</label>
+            <input type="text" id="maSV" th:field="*{maSV}" class="form-control" placeholder="Nhập mã sinh viên..."/>
+            <div th:if="${#fields.hasErrors('maSV')}" th:errors="*{maSV}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="hoTen">Họ và Tên:</label>
+            <input type="text" id="hoTen" th:field="*{hoTen}" class="form-control" placeholder="Nhập họ tên..."/>
+            <div th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" th:field="*{email}" class="form-control" placeholder="Nhập Email..."/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="sdt">Số Điện Thoại:</label>
+            <input type="text" id="sdt" th:field="*{sdt}" class="form-control" placeholder="Nhập số điện thoại..."/>
+            <div th:if="${#fields.hasErrors('sdt')}" th:errors="*{sdt}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="maDotCuuTro">Đợt Cứu Trợ:</label>
+            <select id="maDotCuuTro" th:field="*{maDotCuuTro}" class="form-control">
+                <option value="" selected>-- Chọn Đợt Cứu Trợ --</option>
+                <option th:each="dotCuuTro : ${dotCuuTros}" th:value="${dotCuuTro.maDotCuuTro}" th:text="${dotCuuTro.maDotCuuTro}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('maDotCuuTro')}" th:errors="*{maDotCuuTro}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="maTruong">Trường:</label>
+            <select id="maTruong" th:field="*{maTruong}" class="form-control">
+                <option value="" selected>-- Chọn Trường --</option>
+                <option th:each="truong : ${truongs}" th:value="${truong.maTruong}" th:text="${truong.tenTruong}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('maTruong')}" th:errors="*{maTruong}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="ngayCuuTro">Ngày Cứu Trợ:</label>
+            <input type="date" id="ngayCuuTro" th:field="*{ngayCuuTro}" class="form-control" placeholder="Nhập ngày cứu trợ..."/>
+            <div th:if="${#fields.hasErrors('ngayCuuTro')}" th:errors="*{ngayCuuTro}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="deXuatCaiThien">Đề xuất cải thiện:</label>
+            <input type="text" id="deXuatCaiThien" th:field="*{deXuatCaiThien}" class="form-control" placeholder="Nhập đề xuất cải thiện..."/>
+            <div th:if="${#fields.hasErrors('deXuatCaiThien')}" th:errors="*{deXuatCaiThien}" class="text-danger"></div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+    <a th:href="@{/search}" class="btn btn-secondary mt-3">Back to Info Cứu Trợ</a>
+</div>
+</body>
+</html>
