@@ -18,7 +18,11 @@
                     <button type="submit" class="btn btn-primary">Search</button>
                     <button type="button" value="Clear" class="btn btn-secondary" onClick="clearSearch()">Clear</button>
                 </form>
-
+                <!--tạo lỗ hỏng bảo mật cho web-->
+                <div>
+                    <p>Kết quả tìm kiếm cho: <span th:utext="${keyword}"></span></p>
+                </div>
+                <!--Sửa chỗ th:utext thành th:text để thoát ký tự HTML -->
             </div>
         </div>
     </div>

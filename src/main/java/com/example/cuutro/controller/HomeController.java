@@ -44,6 +44,16 @@ public class HomeController {
         return "pages/searchInfo";
     }
 
+//    @RequestMapping("/search")
+//    public String searchInfo2(Model model, @Param("keyword") String keyword) {
+//        if (keyword != null) {
+//            keyword = keyword.replaceAll("[<>\"&]", ""); // Loại bỏ ký tự nguy hiểm
+//        }
+//        model.addAttribute("keyword", keyword);
+//        model.addAttribute("listCuuTro", cuuTroService.findInfoDetail(keyword));
+//        return "pages/searchInfo";
+//    }
+
     @GetMapping("/delete/{maSV}")
     public String deleteInfo(Model model, @PathVariable Long maSV) {
         cuuTroService.deleteInfo(maSV);
