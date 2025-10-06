@@ -90,8 +90,4 @@
 - [Spring Boot with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 - Hỗ trợ: Đặt câu hỏi trên [Railway Community](https://community.railway.app/).
 
-## Góp ý và đóng góp
-- Fork repository và gửi pull request nếu bạn muốn cải thiện project.
-- Báo cáo lỗi qua [Issues](https://github.com/[username]/[repo-name]/issues).
-
 Cảm ơn bạn đã sử dụng project này! Chúc bạn thành công khi triển khai trên Railway!
